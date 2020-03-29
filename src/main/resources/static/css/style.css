@@ -1,0 +1,43 @@
+@charset "ISO-8859-1";
+body,html{
+		height:100%;
+		margin:0;
+		background-color:#FFE4E1;
+		color:#696969;
+		font-family: 'Courgette', cursive;
+		text-shadow: 0.4vw -0.3vw 0.6vw #CE5937;
+}
+section{
+		font-size:4vw;
+}
+section button{
+		font-size:3vw;
+}
+div{
+		margin:0 0 2vw 1vw;
+		padding:1vw;
+}
+	#title{
+			margin:2vw 0 0 25vw;
+			font-size:3vw;
+	}
+	#msg{
+		font-size:2vw;
+		color:black;
+		font-weight:italic;
+	}
+input:focus{
+			outline-color:black;
+		}
+input {
+font-size:2.5vw;
+width:35%;  
+}
+footer{
+	position:fixed;
+	bottom:0;
+	color:black;
+	font-style:italic;
+	font-size:1.5vw;
+	margin:1vw;
+}
