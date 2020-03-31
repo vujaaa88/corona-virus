@@ -1,7 +1,7 @@
 var settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php",
+	"url": "https://coronavirus-monitor.p.rapidapi.com/coronavirus/world_total_stat.php",
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
@@ -38,7 +38,7 @@ function getDetail(){
 	var settings = {
 		"async": true,
 		"crossDomain": true,
-		"url": "https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=" + country,
+		"url": "https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country_name.php?country=" + country,
 		"method": "GET",
 		"headers": {
 		"x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
