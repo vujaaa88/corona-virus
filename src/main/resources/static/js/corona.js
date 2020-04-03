@@ -1,4 +1,4 @@
-var settings = {
+const settings = {
 	"async": true,
 	"crossDomain": true,
 	"url": "https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php",
@@ -9,11 +9,10 @@ var settings = {
 	}
 }	
 $.ajax(settings).done(function (response) {
-	var obj = JSON.parse(response);
-	
-	var sum = obj.total_cases;
-	var deaths = obj.total_deaths;
-	var recov = obj.total_recovered;
+	let obj = JSON.parse(response);
+	let sum = obj.total_cases;
+	let deaths = obj.total_deaths;
+	let recov = obj.total_recovered;
 	
 	sum = sum.replace(/,/g, '');
 	deaths = deaths.replace(/,/g, '');
@@ -22,7 +21,7 @@ $.ajax(settings).done(function (response) {
 	sum = parseInt(sum);
 	deaths = parseInt(deaths);
 	recov = parseInt(recov);
-	var active_cases = sum - (deaths + recov);
+	let active_cases = sum - (deaths + recov);
 	active_cases = formatNumber(active_cases);
 	
 	document.getElementById("total").innerHTML +="<span style='font-size:6vw; font-weight:bold;'>" + obj.total_cases + "</span>"
@@ -30,12 +29,12 @@ $.ajax(settings).done(function (response) {
 	document.getElementById("deaths").innerHTML +="<span style='color: red; font-size:6vw; font-weight:bold;'>" + obj.total_deaths + "</span>"
 	document.getElementById("recovered").innerHTML += "<span style='color: lime;font-size:6vw; font-weight:bold;'>" + obj.total_recovered + "</span>"
 
-	var percentage = "3.40 %";
+	let percentage = "3.40 %";
 	document.getElementById("percentage").innerHTML += "<span style='font-size:6vw; font-weight:bold;'>" + percentage + "</span>";
 });
 function getDetail(){
-	var country = document.getElementById("site-search").value;
-	var settings = {
+	let country = document.getElementById("site-search").value;
+	let elements = {
 		"async": true,
 		"crossDomain": true,
 		"url": "https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=" + country,
@@ -46,15 +45,14 @@ function getDetail(){
 		}
 	}
 
-$.ajax(settings).done(function (resp) {
-	var myData = JSON.parse(resp);
-	console.log(myData);
+$.ajax(elements).done(function (resp) {
+	let myData = JSON.parse(resp);
 	document.getElementById("list").innerHTML = "";
 	document.getElementById("msg").innerHTML = "";
 	if(myData.latest_stat_by_country !== undefined && myData.latest_stat_by_country.length !== 0){
 							
-							var array = [];
-							var min_cases;
+							let array = [];
+							let min_cases;
 							if(myData.latest_stat_by_country[0].total_deaths === ""){
 								min_cases = myData.latest_stat_by_country[0].total_cases;
 								min_cases = min_cases.replace(/,/g, '');
@@ -65,9 +63,9 @@ $.ajax(settings).done(function (resp) {
 							}
 							min_cases = formatNumber(min_cases);
 							
-							var tot_case = myData.latest_stat_by_country[0].total_cases;
+							let tot_case = myData.latest_stat_by_country[0].total_cases;
 							tot_case = tot_case.replace(/,/g, '');
-							var real_number = (tot_case * 100);
+							let real_number = (tot_case * 100);
 							real_number = formatNumber(real_number);
 							
 							array.push('<li>' + "Country: " + myData.latest_stat_by_country[0].country_name + '</li>');
