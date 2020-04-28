@@ -56,17 +56,16 @@ $.ajax(elements).done(function (resp) {
 							if(myData.latest_stat_by_country[0].total_deaths === ""){
 								min_cases = myData.latest_stat_by_country[0].total_cases;
 								min_cases = min_cases.replace(/,/g, '');
+									let tot_case = myData.latest_stat_by_country[0].total_cases;
+									tot_case = tot_case.replace(/,/g, '');
+									min_cases = (tot_case * 100);
 							} else {
 								min_cases = myData.latest_stat_by_country[0].total_deaths;
 								min_cases = min_cases.replace(/,/g, '');
 								min_cases *= 800;
 							}
 							min_cases = formatNumber(min_cases);
-							
-							let tot_case = myData.latest_stat_by_country[0].total_cases;
-							tot_case = tot_case.replace(/,/g, '');
-							let real_number = (tot_case * 100);
-							real_number = formatNumber(real_number);
+						
 							
 							array.push('<li>' + "Country: " + myData.latest_stat_by_country[0].country_name + '</li>');
 							array.push('<li>' + "Confirmed: " + myData.latest_stat_by_country[0].total_cases + '</li>');
@@ -76,7 +75,7 @@ $.ajax(elements).done(function (resp) {
 							array.push('<li>' + "Deaths: "+ "<span style='color:red;'>" + myData.latest_stat_by_country[0].total_deaths + "</span>" + '</li>');
 							array.push('<li>' + "Recovered: " + "<span style='color:lime;'>" + myData.latest_stat_by_country[0].total_recovered + "</span>" + '</li>');
 							array.push('<li>' + "Last Update: " + myData.latest_stat_by_country[0].record_date + '</li>');
-							array.push('<li>' + "The actual number of infected is between "+ "<span style='color:black; font-weight:bold;'>" + min_cases + " - " + real_number +"</span>" + "!!!" + '</li>');
+							array.push('<li>' + "The actual number of infected is around:  "+ "<span style='color:black; font-weight:bold;'>" + min_cases +"</span>" + "!!!" + '</li>');
 							$('ul').append($(array.join('')));
 			
 	} else {
